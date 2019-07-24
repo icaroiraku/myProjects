@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./modelo.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <h:form>   
+         <p:dataTable id="tabela" value="#{bandaBean.banda}"
+                         var="componente" 
+                         emptyMessage="Nenhum Integrante Cadastrado na Banda"
+                         paginator="true"
+                         paginatorPosition="bottom"
+                         paginatorAlwaysVisible="false"
+                         rows="10">
+            
+                <p:column headerText="Nome"  sortBy="#{componente.nome}" >
+                    <h:outputLabel value="#{componente.nome}"/>
+                </p:column>
+ 
+                <p:column headerText="Sobrenome" sortBy="#{componente.sobrenome}" >
+                    <h:outputLabel value="#{componente.sobrenome}"/>
+                </p:column>
+            
+                <p:column headerText="Cargo" sortBy="#{componente.cargo}">
+                    <h:outputLabel value="#{componente.cargo}"/>
+                </p:column> 
+                
+                <p:column headerText="Data de Adm"  sortBy="#{componente.dtAdmissao}">
+                    <h:outputLabel value="#{componente.dtAdmissao}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </h:outputLabel>
+                </p:column>
+                
+                <p:column headerText="Sexo" sortBy="#{componente.sexo}">
+                    <h:outputLabel value="#{componente.sexo}"/>
+                </p:column>
+                
+                <p:column headerText="Ativo" sortBy="#{componente.ativo}">
+                    <h:outputLabel value="#{componente.ativo}"/>
+                </p:column>
+            </p:dataTable>
+    </h:form>
+    </ui:define>
+
+</ui:composition>

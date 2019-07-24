@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Trabalho2</title>
+    </h:head>
+    <h:body>
+        <h:form>
+        <p:panelMenu style="width:300px">
+        <p:submenu label="Cliente Pessoa Fisica">
+            <p:menuitem value="fisica" action="Fisica.xhtml"  />
+            </p:submenu>      
+        </p:panelMenu>
+                 
+            <h3> Clientes Juridicas</h3>
+            <h:panelGrid columns="1">
+          
+                <p:outputLabel value="Nome" for="nome"/>
+                <p:inputText id="nome" value="#{bean.pj.nome}"/>
+
+                <p:outputLabel value="email" for="email"/>
+                <p:inputText id="email" value="#{bean.pj.email}"/>
+                
+                <p:outputLabel value="Endereço" for="endereco"/>
+                <p:inputText id="endereco" value="#{bean.pj.endereco}"/>
+               
+                <p:outputLabel value="CNPJ" for="CNPJ"/>
+                <p:inputMask id="CNPJ" mask="99.999.999/9999-99" value="#{bean.pj.CNPJ}"/>
+              
+                <p:commandButton value="salvar" action="#{bean.adicionarPJ()}" update="@form"/>
+                        
+                <p:dataTable
+                    value="#{bean.listapj}"
+                    emptyMessage="vazio"
+                    var="p"
+                    paginator="true"
+                    rows="10"
+                    paginatorPosition="Bottom">   
+                    <p:column headerText="nome">
+                        <h:outputLabel value="#{p.nome}"/>
+                    </p:column>
+                     
+                    <p:column headerText="email">
+                        <h:outputLabel value="#{p.email}"/>
+                    </p:column>
+                     
+                    <p:column headerText="Endereço">
+                        <h:outputLabel value="#{p.endereco}"/>
+                    </p:column>
+                    
+                    <p:column headerText="CNPJ">
+                        <h:outputLabel value="#{p.CNPJ}"/>
+                    </p:column>
+                    
+                </p:dataTable>
+            </h:panelGrid>
+        </h:form>
+   </h:body>
+</html>

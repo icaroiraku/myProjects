@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="/css/default.css"/>
+        <h:outputStylesheet name="/css/cssLayout.css"/>
+        <title>Lista categoria</title>
+    </h:head>
+    
+    <h:body>
+
+        <div id="top">
+            <ui:insert name="top">Controle de produtos</ui:insert>
+        </div>
+        <div>
+            <div id="left">
+                <ui:insert name="left">
+                    <h:form>
+                        <h:panelGrid columns="1">
+                             
+                            
+                            <h4>Cadastrar</h4>
+                            <h:commandLink value="Produto" action="cadProduto.xhtml"/>
+                            <h:commandLink value="Categoria" action="cadCategoria.xhtml"/>
+                            
+                            <h4>Listar</h4>
+                            <h:commandLink value="Produto" action="listProduto.xhtml"/>
+                            <h:commandLink value="Categoria" action="listCategoria.xhtml"/>
+                        </h:panelGrid>
+
+                    </h:form>
+                </ui:insert>
+            </div>
+            <div id="content" class="left_content">
+                <ui:insert name="content">
+                    <h:panelGrid columns="1">
+                <h1>Cadastro de Produtos</h1>
+                
+                    
+                        
+                <p:dataTable id="tabela" value="#{bean.listCat}" 
+                         var="p"  emptyMessage="Nenhuma categoria cadastro" 
+                         paginator="true"
+                         paginatorPosition="Bottom"
+                         paginatorAlwaysVisible="false"
+                         rows="10">
+                
+                        <p:column headerText="codigo" sortBy="#{p.codigo}">
+                        <h:outputLabel value="#{p.codigo}"/>
+                        </p:column>
+                        
+                        <p:column headerText="nome Categoria" sortBy="#{p.descricao}">
+                        <h:outputLabel value="#{p.descricao}"/>
+                        </p:column>
+                                  
+                       
+            </p:dataTable>
+                        
+                    </h:panelGrid>
+                </ui:insert>
+            
+        </div>
+        <div id="bottom">
+            <ui:insert name="bottom">Todos os direitos reservados</ui:insert>
+        </div>
+        </div>
+    </h:body>
+
+</html>

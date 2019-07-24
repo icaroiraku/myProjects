@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Atividade JSF02</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="2">
+                <p:outputLabel value="Nome"  for="nome"/>
+                <p:inputText id="nome" value="#{bean.pessoa.nome}"/>
+                <p:outputLabel value="E-mail" for="email"/>
+                <p:inputText id="email" value="#{bean.pessoa.email}"/>
+                <p:outputLabel value="Telefone" for="telefone"/>
+                <p:inputMask mask="(99) 99999-9999" id="telefone" value="#{bean.pessoa.telefone}" />
+                <p:outputLabel value="Dt. Nascimento" for="dtNasc"/>
+                <p:calendar id="dtNasc" pattern="dd/MM/yyyy" value="#{bean.pessoa.dtNasc}" />
+                <p:commandButton value="Adicionar" action="#{bean.adicionar()}"
+                                 update="@form"/>
+            </h:panelGrid>
+            
+            <p:dataTable value="#{bean.pessoas}"
+                         emptyMessage="Nenhuma Pessoa Cadastrada"
+                         var = "p"
+                         paginator="true"
+                         rows="10"
+                         paginatorPosition="bottom">
+                <p:column headerText="Nome">
+                    <h:outputLabel value="#{p.nome}"/>
+                </p:column>
+            
+                <p:column headerText="Email">
+                    <h:outputLabel value="#{p.email}"/>
+                </p:column>
+            
+                <p:column headerText="Telefone">
+                    <h:outputLabel value="#{p.telefone}"/>
+                </p:column>
+                
+                <p:column headerText="Data de Nascimento">
+                    <h:outputLabel value="#{p.dtNasc}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

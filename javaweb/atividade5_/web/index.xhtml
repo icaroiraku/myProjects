@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+     
+    <h:head>
+        <title>Atividade5</title>
+    </h:head>   
+  <h:body>
+         <h:form>
+        <h:panelGrid columns="2">
+                <h:outputLabel value="Nome" for="nome"/>
+                <h:inputText id="nome" value="#{bean.livro.titulo}"/>
+                <h:outputLabel value="Sobrenome" for="sobrenome"/>
+                <h:inputText id="sobrenome" value="#{bean.livro.isbn}" />
+                <h:outputLabel for="Cargo" value="cargo" />
+            <h:selectOneMenu id="cargo" value="#{dropdownView.country}" style="width:150px">
+                <h:outputLabel value="Data de Admissao" for="dtadmisao"/>
+                <h:inputText id="dtadmisao" value="#{bean.livro.dtLancamento}" />
+                <h:outputLabel value="Salario" for="salario"/>
+                <h:inputText id="salario" value="#{bean.livro.titulo}"/>
+                <h:outputLabel value="Sexo" for="sexo"/>
+                  <h:selectOneRadio id="sexo" value="#{dropdownView.country}" style="width:150px">
+                       <f:selectItem itemLabel="Masculino" itemValue="masculino" />
+            <f:selectItem itemLabel="Feminino" itemValue="feminino" />
+                       <h:outputLabel value="Ativo" for="ativo"/>
+                       <h:selectManyCheckbox id="ativo" value="#{checkboxView.selectedConsoles}">
+                  <h:outputLabel value="Observaçao" for="observacao"/>
+                  <h:inputTextarea rows="5" cols="30" counter="display" maxlength="10" counterTemplate="{0} characters remaining." autoResize="false" />
+    <h:outputText id="observacao" />
+                
+              
+            </h:panelGrid>
+             <p:commandButton value="Adicionar" action="#{bean.adicionar()}"update="@form"/>
+             
+         <p:dataTable var="i" id="tabela" value="#{bean.intens}"
+                         emptyMessage="Nenhum integrante Cadastrado">
+                         
+               <p:column headerText="Nome">
+                    <h:outputLabel value="#{i.descricao}"/>
+                </p:column>
+            
+                <p:column headerText="Sobrenome">
+                    <h:outputLabel value="#{i.tipo}"/>
+                </p:column>
+            
+                <p:column headerText="Cargo">
+                    <h:outputLabel value="#{i.valor}"/>
+                </p:column>
+                
+                
+            </p:dataTable>
+            
+            
+                </h:panelGroup>
+                
+            </p:dialog>
+            <!-- final da dialog-->
+        </h:form>
+    </h:body>
+</html>

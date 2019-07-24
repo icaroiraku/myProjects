@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Trabalho2</title>
+    </h:head>
+    <h:body>
+        <h:form>
+        <p:panelMenu style="width:300px">
+        <p:submenu label="Cliente Pessoa Juridica">
+            <p:menuitem value="Juridica" action="juridica.xhtml"  />
+            </p:submenu>      
+        </p:panelMenu>
+                 
+            <h3>Clientes Fisico</h3>
+            <h:panelGrid columns="1">
+          
+                <p:outputLabel value="Nome" for="nome"/>
+                <p:inputText id="nome" value="#{bean.pf.nome}"/>
+
+                <p:outputLabel value="email" for="email"/>
+                <p:inputText id="email" value="#{bean.pf.email}"/>
+                
+                <p:outputLabel value="Endereço" for="endereco"/>
+                <p:inputText id="endereco" value="#{bean.pf.endereco}"/>
+               
+                <p:outputLabel value="CPF" for="CPF"/>
+                <p:inputMask id="CPF" mask="999.999.999-99" value="#{bean.pf.cpf}"/>
+              
+                <p:commandButton value="salvar" action="#{bean.adicionarPF()}" update="@form"/>
+                        
+                <p:dataTable
+                    value="#{bean.listapf}"
+                    emptyMessage="vazio"
+                    var="p"
+                    paginator="true"
+                    rows="10"
+                    paginatorPosition="Bottom">   
+                    <p:column headerText="nome">
+                        <h:outputLabel value="#{p.nome}"/>
+                    </p:column>
+                     
+                    <p:column headerText="email">
+                        <h:outputLabel value="#{p.email}"/>
+                    </p:column>
+                     
+                    <p:column headerText="Endereço">
+                        <h:outputLabel value="#{p.endereco}"/>
+                    </p:column>
+                    
+                    <p:column headerText="CPF">
+                        <h:outputLabel value="#{p.cpf}"/>
+                    </p:column>
+                    
+                </p:dataTable>
+            </h:panelGrid>
+        </h:form>
+   </h:body>
+</html>
+
